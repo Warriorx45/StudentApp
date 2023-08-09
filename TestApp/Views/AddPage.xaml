@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.AddPage"
+             xmlns:view="clr-namespace:TestApp.ViewModels"
+             Title="AddPage">
+    <ContentPage.BindingContext>
+        <view:DataViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Padding="10" Spacing="20">
+        <ImageButton Source="{Binding Image}" 
+                     Clicked="AddbtnIMage_Clicked" HeightRequest="60" WidthRequest="100"/>
+        <Label 
+            Text="Name : "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
+        <Entry x:Name="entName" Text="{Binding Name}" Keyboard="Text" Placeholder="Ex:George Kamal"/>
+
+        <Label 
+            Text="Age : "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Entry x:Name="entAge" Text="{Binding Age}" Keyboard="Numeric" Placeholder="Ex:17"/>
+        
+        <Button Text="Add" Clicked="AddbtnData_Clicked"/>
+        
+    </VerticalStackLayout>
+</ContentPage>

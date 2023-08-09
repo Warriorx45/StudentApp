@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:TestApp.ViewModels"
+             x:Class="TestApp.Views.MainViewPage" Loaded="ContentView_Loaded">
+    <ContentView.BindingContext>
+        <view:DataViewModel/>
+    </ContentView.BindingContext>
+    <VerticalStackLayout Padding="15" Spacing="15" >
+        <SearchBar Text="{Binding SearchB}" TextChanged="SearchBar_TextChanged" Placeholder="Search"
+                   HorizontalOptions="CenterAndExpand"/>
+
+        <Label Text="{Binding Msg}" HorizontalOptions="Center"
+               FontSize="Large"/>
+        
+        <Button Text="Add Person" HorizontalOptions="End" Clicked="Button_Clicked"/>
+        <ListView ItemsSource="{Binding DataModels}" ItemSelected="ListView_ItemSelected" 
+                  SelectedItem="{Binding SelectedItem}" Margin="10" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell > 
+                        <Grid Padding="10" Margin="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Image}" Grid.RowSpan="2" WidthRequest="70"
+                                   HeightRequest="70"/>
+                            
+                            <Label Grid.Column="1" Text="{Binding Name}" FontSize="Medium"/>
+                            <Label Grid.Column="1"  Grid.Row="1"  Text="{Binding Age}" FontSize="Medium"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </VerticalStackLayout>
+</ContentView>
